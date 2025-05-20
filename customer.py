@@ -19,8 +19,16 @@ class Customer:
     def get_orders(self):
         return self._orders
 
+    def get_coffees(self):
+        coffees = []
+        for order in self._orders:
+            coffee = order.get_coffee()
+            if coffee not in coffees:
+                coffees.append(coffee)
+        return coffees
+
     def create_order(self, coffee, price):
         order = Order(self, coffee, price)
         self.add_order(order)
+        coffee.add_order(order)
         return order
-
