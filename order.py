@@ -12,3 +12,12 @@ class Order:
         self._customer = customer
         self._coffee = coffee
         self._price = float(price)
+
+    def get_customer(self):
+        return self._customer
+
+    def get_coffee(self):
+        return self._coffee
+
+    def get_price(self):
+        return self._price
