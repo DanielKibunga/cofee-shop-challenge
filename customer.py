@@ -1,6 +1,6 @@
 class Customer:
     def __init__(self, name):
-        self.name = name  # uses setter validation
+        self.name = name  
         self._orders = []
 
     @property
