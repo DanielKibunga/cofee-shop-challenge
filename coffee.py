@@ -7,19 +7,24 @@ class Coffee:
         self._name = name
         self._orders = []
 
-    def get_name(self):
+    @property
+    def name(self):
         return self._name
 
     def add_order(self, order):
         self._orders.append(order)
 
-    def get_orders(self):
+    def orders(self):
         return self._orders
 
-    def get_customers(self):
-        customers = []
-        for order in self._orders:
-            customer = order.get_customer()
-            if customer not in customers:
-                customers.append(customer)
-        return customers
+    def customers(self):
+        return list({order.customer for order in self._orders})
+
+    def num_orders(self):
+        return len(self._orders)
+
+    def average_price(self):
+        if not self._orders:
+            return 0
+        total = sum(order.price for order in self._orders)
+        return total / len(self._orders)
